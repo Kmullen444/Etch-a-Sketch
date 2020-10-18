@@ -1,0 +1,31 @@
+:root{
+    --column: 1fr;
+    --row: 1fr;
+}
+
+#big{
+    display: grid;
+    place-items: center;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(var(--column),1fr);
+    grid-template-rows: repeat(var(--row), 1fr);
+    height: 530px;
+    width: 530px;
+}
+
+.filled{
+  background-color: black;
+  border: 1px solid black;
+}
+
+.notFilled{
+    background-color: white;
+    border: 1px solid black;
+}
+
+.btn{
+    grid-template-rows: auto;
+}
