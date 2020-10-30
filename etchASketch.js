@@ -2,8 +2,9 @@ let input;
 
 const container = document.getElementById('container');
 const reset = document.querySelector('#reset');
-const grid = document.getElementById('grid')
-
+const grid = document.getElementById('grid');
+const gridItem = document.querySelector('div');
+const random = document.querySelector('#color');
 
 
 const createGrid = function (row) {
@@ -21,18 +22,21 @@ const createGrid = function (row) {
 
 
 const userInput = () => {
-    input = prompt(`Enter the size of the new grid between 1 - 100!`)
-    if (input < 1){
-       input =  prompt(`That number is too small please enter a number between 1 - 100`);
-    }else if (input > 100){
-        input = prompt (`That number is too big please choose a number between 1 - 100`)
+    input = prompt(`Enter the size of the new grid between 4 - 100!`)
+    if (input === null){
+        createGrid(16);
+        return;
+    }else if (input < 4 || input > 100){
+        input = prompt(`That's not a vaild number, please choose between 4-100!`);
     }
 }
 
-const gridItem = document.querySelector('div');
-gridItem.addEventListener('mouseover', function (event) {
-    event.target.classList.replace('notFilled', 'filled');
-});
+function fill(e) {
+    if (!e.target.matches('#grid')) return;
+    e.target.style.backgroundColor = 'black';
+    mousedown = true;
+    console.log(e);
+}
 
 
 function remove() {
@@ -58,6 +62,14 @@ function resetGrid() {
 }
 
 reset.addEventListener('click', resetGrid);
+
+let mousedown = false;
+
+gridItem.addEventListener('click', fill);
+gridItem.addEventListener('mousemove', (e) => mousedown && fill(e));
+gridItem.addEventListener('mousedown', () => mousedown = true);
+gridItem.addEventListener('mouseup', () => mousedown = false);
+
 
 
 createGrid(16);

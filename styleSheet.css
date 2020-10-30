@@ -26,6 +26,17 @@
     border: 1px solid black;
 }
 
-.btn{
-    grid-template-rows: auto;
+.btn{    
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+    text-align: center;
 }
